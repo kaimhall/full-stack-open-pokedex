@@ -1,9 +1,6 @@
 name: deployment pipeline
 
 on:
-  push:
-    branches:
-      - master
   pull_request:
     branches: [master]
     types: [opened, synchronize]
