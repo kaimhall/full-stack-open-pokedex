@@ -54,3 +54,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           pre_release: true
           REPO_OWNER: kaimhall
+          RELEASE_BRANCHES: master, main, builds
+          DEFAULT_BUMP: patch
