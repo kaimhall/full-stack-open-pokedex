@@ -45,11 +45,13 @@ jobs:
     runs-on: ubuntu-20.04
     if: ${{ !contains(github.event.head_commit.message, '#skip') }}
     steps:
-      - name: work around permission issue
-        run: git config --global --add safe.directory /github/workspace
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: "0"
       - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@eca2b69f9e2c24be7decccd0f15fdb1ea5906598
+        uses: anothrNick/github-tag-action@1.39.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          pre_release: true
+          REPO_OWNER: kaimhall
+          RELEASE_BRANCHES: master, main, builds
+          DEFAULT_BUMP: patch
